@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose -f docker-compose-k8s.yml convert
+    kompose.version: 1.19.0 (f63a961c)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: worker
+  name: worker
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose -f docker-compose-k8s.yml convert
+        kompose.version: 1.19.0 (f63a961c)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: worker
+    spec:
+      containers:
+      - image: dockersamples/examplevotingapp_worker
+        name: worker
+        resources: {}
+      restartPolicy: Always
+status: {}
